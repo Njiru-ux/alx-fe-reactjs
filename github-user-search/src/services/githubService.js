@@ -9,6 +9,36 @@ const githubService = axios.create({
   },
 });
 
+// Advanced search function for multiple criteria
+export const advancedUserSearch = async (params, page = 1, perPage = 10) => {
+  try {
+    let query = '';
+    
+    // Build query string based on parameters
+    if (params.username) {
+      query += `${params.username} `;
+    }
+    if (params.location) {
+      query += `location:${params.location} `;
+    }
+    if (params.minRepos) {
+      query += `repos:>${params.minRepos} `;
+    }
+    
+    // Trim and replace spaces with +
+    query = query.trim().replace(/\s+/g, '+');
+    
+    const response = await githubService.get(
+      `/search/users?q=${query}&page=${page}&per_page=${perPage}&sort=followers`
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error in advanced user search:', error);
+    throw error;
+  }
+};
+
+// Get detailed user data
 export const fetchUserData = async (username) => {
   try {
     const response = await githubService.get(`/users/${username}`);
