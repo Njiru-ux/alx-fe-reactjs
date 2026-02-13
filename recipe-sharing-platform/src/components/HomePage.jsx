@@ -28,6 +28,17 @@ const HomePage = () => {
         Recipes to Share
       </h1>
 
+      {/* Add Recipe Button */}
+      <div className="text-right mb-6">
+        <Link
+          to="/add"
+          className="inline-block bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-6 rounded-lg transition-colors duration-200"
+        >
+          + Add New Recipe
+        </Link>
+      </div>
+
+      {/* Recipe Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {recipes.map((recipe) => (
           <div
