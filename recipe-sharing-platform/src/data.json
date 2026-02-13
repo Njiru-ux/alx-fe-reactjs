@@ -3,24 +3,62 @@
     "id": 1,
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400&h=300&fit=crop"
+    "image": "https://images.unsplash.com/photo-1612874742237-6526221588e3?w=400&h=300&fit=crop",
+    "ingredients": [
+      "200g spaghetti",
+      "2 large eggs",
+      "50g grated Parmesan cheese",
+      "100g pancetta or bacon",
+      "2 cloves garlic",
+      "Salt and black pepper"
+    ],
+    "instructions": "1. Cook spaghetti in salted water. 2. Fry pancetta with garlic. 3. Beat eggs with Parmesan. 4. Drain pasta, mix with pancetta, then off heat stir in egg mixture. 5. Season with pepper and serve."
   },
   {
     "id": 2,
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&h=300&fit=crop"
+    "image": "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=400&h=300&fit=crop",
+    "ingredients": [
+      "500g chicken breast",
+      "1 cup yogurt",
+      "2 tbsp tikka masala spice",
+      "1 onion",
+      "2 tomatoes",
+      "1/2 cup cream",
+      "Fresh cilantro"
+    ],
+    "instructions": "1. Marinate chicken in yogurt and spices. 2. Grill or pan-fry until cooked. 3. Sauté onion, add tomatoes and simmer. 4. Add cream and chicken, cook for 10 minutes. 5. Garnish with cilantro."
   },
   {
     "id": 3,
     "title": "Avocado Toast",
     "summary": "Fresh avocado smashed on artisan bread, topped with chili flakes and lemon.",
-    "image": "https://images.unsplash.com/photo-1588137378633-dea1336ce1e4?w=400&h=300&fit=crop"
+    "image": "https://images.unsplash.com/photo-1588137378633-dea1336ce1e4?w=400&h=300&fit=crop",
+    "ingredients": [
+      "2 slices sourdough bread",
+      "1 ripe avocado",
+      "1 tbsp lemon juice",
+      "Chili flakes",
+      "Salt and pepper",
+      "Olive oil"
+    ],
+    "instructions": "1. Toast bread until golden. 2. Mash avocado with lemon juice, salt, and pepper. 3. Spread on toast. 4. Drizzle with olive oil and sprinkle chili flakes."
   },
   {
     "id": 4,
     "title": "Beef Burger",
     "summary": "Juicy beef patty with lettuce, tomato, cheese, and our secret sauce.",
-    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop"
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop",
+    "ingredients": [
+      "250g ground beef",
+      "1 burger bun",
+      "Lettuce leaves",
+      "1 tomato slice",
+      "1 slice cheddar cheese",
+      "1 tbsp burger sauce",
+      "Salt and pepper"
+    ],
+    "instructions": "1. Form beef into patty, season with salt and pepper. 2. Grill or pan-fry to desired doneness, add cheese on top to melt. 3. Toast bun. 4. Assemble: bottom bun, lettuce, patty, tomato, sauce, top bun."
   }
 ]
