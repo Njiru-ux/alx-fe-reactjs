@@ -12,22 +12,9 @@ function MainContent() {
                 color: '#2c3e50',
                 lineHeight: '1.6',
                 textAlign: 'center',
-                fontFamily: 'Georgia, serif',
-                textShadow: '1px 1px 2px rgba(0,0,0,0.1)'
+                fontFamily: 'Georgia, serif'
             }}>
-                I love to visit <span style={{
-                    color: '#e74c3c',
-                    fontWeight: 'bold',
-                    textDecoration: 'underline'
-                }}>New York</span>, <span style={{
-                    color: '#27ae60',
-                    fontWeight: 'bold',
-                    textDecoration: 'underline'
-                }}>Paris</span>, and <span style={{
-                    color: '#2980b9',
-                    fontWeight: 'bold',
-                    textDecoration: 'underline'
-                }}>Tokyo</span>.
+                I love to visit New York, Paris, and Tokyo.
             </p>
         </main>
     );
