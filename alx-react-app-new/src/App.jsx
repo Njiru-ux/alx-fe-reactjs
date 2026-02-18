@@ -3,6 +3,7 @@ import Header from './components/Header'
 import MainContent from './components/MainContent'
 import Footer from './components/Footer'
 import UserProfile from './components/UserProfile'
+import Counter from './components/Counter'
 import './App.css'
 
 function App() {
@@ -42,6 +43,9 @@ function App() {
         age="28" 
         bio="Passionate about coding and music. Plays guitar in a local band and works as a full-stack developer."
       />
+      
+      {/* Add the Counter component here */}
+      <Counter />
       
       <Footer />
     </div>
