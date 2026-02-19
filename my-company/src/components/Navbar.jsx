@@ -1,6 +1,9 @@
 import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 
 function Navbar() {
+  const [hoveredLink, setHoveredLink] = useState(null);
+
   const navItems = [
     { path: '/', name: 'Home' },
     { path: '/about', name: 'About' },
@@ -11,11 +14,14 @@ function Navbar() {
   return (
     <nav style={{
       backgroundColor: '#2c3e50',
-      padding: '1rem',
+      padding: '1rem 2rem',
       display: 'flex',
-      gap: '20px',
+      gap: '2rem',
       justifyContent: 'center',
-      boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+      boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+      position: 'sticky',
+      top: 0,
+      zIndex: 1000
     }}>
       {navItems.map((item) => (
         <NavLink
@@ -25,11 +31,15 @@ function Navbar() {
             color: isActive ? '#f1c40f' : 'white',
             textDecoration: 'none',
             fontSize: '1.2rem',
+            fontWeight: '500',
             padding: '0.5rem 1rem',
             borderRadius: '5px',
             backgroundColor: isActive ? '#34495e' : 'transparent',
-            transition: 'all 0.3s'
+            transform: hoveredLink === item.path ? 'scale(1.1)' : 'scale(1)',
+            transition: 'all 0.3s ease'
           })}
+          onMouseEnter={() => setHoveredLink(item.path)}
+          onMouseLeave={() => setHoveredLink(null)}
         >
           {item.name}
         </NavLink>
