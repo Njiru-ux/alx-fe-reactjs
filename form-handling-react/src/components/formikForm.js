@@ -1,5 +1,5 @@
 import React from 'react';
-import { useFormik } from 'formik';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import './FormikForm.css';
 
@@ -28,102 +28,85 @@ const FormikForm = () => {
     });
   };
 
-  const formik = useFormik({
-    initialValues: {
-      username: '',
-      email: '',
-      password: ''
-    },
-    validationSchema: validationSchema,
-    onSubmit: async (values, { setSubmitting, resetForm, setStatus }) => {
-      try {
-        await mockApiCall(values);
-        setStatus('Registration successful!');
-        resetForm();
-      } catch (error) {
-        setStatus('Registration failed. Please try again.');
-      } finally {
-        setSubmitting(false);
-      }
+  const handleSubmit = async (values, { setSubmitting, resetForm, setStatus }) => {
+    try {
+      await mockApiCall(values);
+      setStatus('Registration successful!');
+      resetForm();
+    } catch (error) {
+      setStatus('Registration failed. Please try again.');
+    } finally {
+      setSubmitting(false);
     }
-  });
+  };
 
   return (
     <div className="formik-form-container">
       <h2>User Registration (Formik + Yup)</h2>
       
-      <form onSubmit={formik.handleSubmit} className="registration-form">
-        <div className="form-group">
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.username}
-            className={
-              formik.touched.username && formik.errors.username ? 'error' : ''
-            }
-            placeholder="Enter your username"
-          />
-          {formik.touched.username && formik.errors.username && (
-            <span className="error-message">{formik.errors.username}</span>
-          )}
-        </div>
+      <Formik
+        initialValues={{
+          username: '',
+          email: '',
+          password: ''
+        }}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ isSubmitting, status }) => (
+          <Form className="registration-form">
+            <div className="form-group">
+              <label htmlFor="username">Username:</label>
+              <Field
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+                className="form-input"
+              />
+              <ErrorMessage name="username" component="span" className="error-message" />
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-            className={
-              formik.touched.email && formik.errors.email ? 'error' : ''
-            }
-            placeholder="Enter your email"
-          />
-          {formik.touched.email && formik.errors.email && (
-            <span className="error-message">{formik.errors.email}</span>
-          )}
-        </div>
+            <div className="form-group">
+              <label htmlFor="email">Email:</label>
+              <Field
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                className="form-input"
+              />
+              <ErrorMessage name="email" component="span" className="error-message" />
+            </div>
 
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-            className={
-              formik.touched.password && formik.errors.password ? 'error' : ''
-            }
-            placeholder="Enter your password"
-          />
-          {formik.touched.password && formik.errors.password && (
-            <span className="error-message">{formik.errors.password}</span>
-          )}
-        </div>
+            <div className="form-group">
+              <label htmlFor="password">Password:</label>
+              <Field
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                className="form-input"
+              />
+              <ErrorMessage name="password" component="span" className="error-message" />
+            </div>
 
-        <button 
-          type="submit" 
-          disabled={formik.isSubmitting}
-          className="submit-button"
-        >
-          {formik.isSubmitting ? 'Registering...' : 'Register'}
-        </button>
+            <button 
+              type="submit" 
+              disabled={isSubmitting}
+              className="submit-button"
+            >
+              {isSubmitting ? 'Registering...' : 'Register'}
+            </button>
 
-        {formik.status && (
-          <div className={`submit-message ${formik.status.includes('successful') ? 'success' : 'error'}`}>
-            {formik.status}
-          </div>
+            {status && (
+              <div className={`submit-message ${status.includes('successful') ? 'success' : 'error'}`}>
+                {status}
+              </div>
+            )}
+          </Form>
         )}
-      </form>
+      </Formik>
     </div>
   );
 };
