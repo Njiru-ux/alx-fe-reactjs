@@ -1,6 +1,7 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import './FormikForm.css';
 
 const validationSchema = Yup.object({
   username: Yup.string()
@@ -36,7 +37,7 @@ const FormikForm = () => {
     validationSchema: validationSchema,
     onSubmit: async (values, { setSubmitting, resetForm, setStatus }) => {
       try {
-        const response = await mockApiCall(values);
+        await mockApiCall(values);
         setStatus('Registration successful!');
         resetForm();
       } catch (error) {
@@ -123,97 +124,6 @@ const FormikForm = () => {
           </div>
         )}
       </form>
-
-      <style jsx>{`
-        .formik-form-container {
-          max-width: 400px;
-          margin: 2rem auto;
-          padding: 2rem;
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .registration-form {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .form-group {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-        }
-
-        label {
-          font-weight: bold;
-          color: #333;
-        }
-
-        input {
-          padding: 0.75rem;
-          border: 1px solid #ddd;
-          border-radius: 4px;
-          font-size: 1rem;
-          transition: border-color 0.3s;
-        }
-
-        input:focus {
-          outline: none;
-          border-color: #007bff;
-          box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-        }
-
-        input.error {
-          border-color: #dc3545;
-        }
-
-        .error-message {
-          color: #dc3545;
-          font-size: 0.875rem;
-          margin-top: 0.25rem;
-        }
-
-        .submit-button {
-          padding: 0.75rem 1.5rem;
-          background-color: #28a745;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          font-size: 1rem;
-          cursor: pointer;
-          transition: background-color 0.3s;
-        }
-
-        .submit-button:hover:not(:disabled) {
-          background-color: #218838;
-        }
-
-        .submit-button:disabled {
-          background-color: #6c757d;
-          cursor: not-allowed;
-        }
-
-        .submit-message {
-          padding: 1rem;
-          border-radius: 4px;
-          text-align: center;
-          margin-top: 1rem;
-        }
-
-        .submit-message.success {
-          background-color: #d4edda;
-          color: #155724;
-          border: 1px solid #c3e6cb;
-        }
-
-        .submit-message.error {
-          background-color: #f8d7da;
-          color: #721c24;
-          border: 1px solid #f5c6cb;
-        }
-      `}</style>
     </div>
   );
 };
