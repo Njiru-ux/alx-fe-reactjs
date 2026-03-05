@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
+import './RegistrationForm.css';
 
 const RegistrationForm = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: ''
-  });
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -13,10 +12,10 @@ const RegistrationForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+    
+    if (name === 'username') setUsername(value);
+    if (name === 'email') setEmail(value);
+    if (name === 'password') setPassword(value);
     
     if (errors[name]) {
       setErrors(prevErrors => ({
@@ -29,21 +28,21 @@ const RegistrationForm = () => {
   const validateForm = () => {
     const newErrors = {};
     
-    if (!formData.username.trim()) {
+    if (!username.trim()) {
       newErrors.username = 'Username is required';
-    } else if (formData.username.length < 3) {
+    } else if (username.length < 3) {
       newErrors.username = 'Username must be at least 3 characters';
     }
     
-    if (!formData.email.trim()) {
+    if (!email.trim()) {
       newErrors.email = 'Email is required';
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
       newErrors.email = 'Email is invalid';
     }
     
-    if (!formData.password) {
+    if (!password) {
       newErrors.password = 'Password is required';
-    } else if (formData.password.length < 6) {
+    } else if (password.length < 6) {
       newErrors.password = 'Password must be at least 6 characters';
     }
     
@@ -63,9 +62,11 @@ const RegistrationForm = () => {
     setSubmitMessage('');
     
     try {
-      const response = await mockApiCall(formData);
+      await mockApiCall({ username, email, password });
       setSubmitMessage('Registration successful!');
-      setFormData({ username: '', email: '', password: '' });
+      setUsername('');
+      setEmail('');
+      setPassword('');
     } catch (error) {
       setSubmitMessage('Registration failed. Please try again.');
     } finally {
@@ -96,7 +97,7 @@ const RegistrationForm = () => {
             type="text"
             id="username"
             name="username"
-            value={formData.username}
+            value={username}
             onChange={handleChange}
             className={errors.username ? 'error' : ''}
             placeholder="Enter your username"
@@ -110,7 +111,7 @@ const RegistrationForm = () => {
             type="email"
             id="email"
             name="email"
-            value={formData.email}
+            value={email}
             onChange={handleChange}
             className={errors.email ? 'error' : ''}
             placeholder="Enter your email"
@@ -124,7 +125,7 @@ const RegistrationForm = () => {
             type="password"
             id="password"
             name="password"
-            value={formData.password}
+            value={password}
             onChange={handleChange}
             className={errors.password ? 'error' : ''}
             placeholder="Enter your password"
@@ -146,97 +147,6 @@ const RegistrationForm = () => {
           </div>
         )}
       </form>
-
-      <style jsx>{`
-        .registration-form-container {
-          max-width: 400px;
-          margin: 2rem auto;
-          padding: 2rem;
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .registration-form {
-          display: flex;
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .form-group {
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-        }
-
-        label {
-          font-weight: bold;
-          color: #333;
-        }
-
-        input {
-          padding: 0.75rem;
-          border: 1px solid #ddd;
-          border-radius: 4px;
-          font-size: 1rem;
-          transition: border-color 0.3s;
-        }
-
-        input:focus {
-          outline: none;
-          border-color: #007bff;
-          box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-        }
-
-        input.error {
-          border-color: #dc3545;
-        }
-
-        .error-message {
-          color: #dc3545;
-          font-size: 0.875rem;
-          margin-top: 0.25rem;
-        }
-
-        .submit-button {
-          padding: 0.75rem 1.5rem;
-          background-color: #007bff;
-          color: white;
-          border: none;
-          border-radius: 4px;
-          font-size: 1rem;
-          cursor: pointer;
-          transition: background-color 0.3s;
-        }
-
-        .submit-button:hover:not(:disabled) {
-          background-color: #0056b3;
-        }
-
-        .submit-button:disabled {
-          background-color: #6c757d;
-          cursor: not-allowed;
-        }
-
-        .submit-message {
-          padding: 1rem;
-          border-radius: 4px;
-          text-align: center;
-          margin-top: 1rem;
-        }
-
-        .submit-message.success {
-          background-color: #d4edda;
-          color: #155724;
-          border: 1px solid #c3e6cb;
-        }
-
-        .submit-message.error {
-          background-color: #f8d7da;
-          color: #721c24;
-          border: 1px solid #f5c6cb;
-        }
-      `}</style>
     </div>
   );
 };
