@@ -62,7 +62,6 @@ const FormikForm = () => {
                 id="username"
                 name="username"
                 placeholder="Enter your username"
-                className="form-input"
               />
               <ErrorMessage name="username" component="span" className="error-message" />
             </div>
@@ -74,7 +73,6 @@ const FormikForm = () => {
                 id="email"
                 name="email"
                 placeholder="Enter your email"
-                className="form-input"
               />
               <ErrorMessage name="email" component="span" className="error-message" />
             </div>
@@ -86,7 +84,6 @@ const FormikForm = () => {
                 id="password"
                 name="password"
                 placeholder="Enter your password"
-                className="form-input"
               />
               <ErrorMessage name="password" component="span" className="error-message" />
             </div>
