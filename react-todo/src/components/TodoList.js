@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './TodoList.css';
 
-const TodoList = () => {
+function TodoList() {
   const [todos, setTodos] = useState([
     { id: 1, text: 'Learn React', completed: false },
     { id: 2, text: 'Build a Todo App', completed: false },
@@ -34,40 +34,32 @@ const TodoList = () => {
   };
 
   return (
-    <div className="todo-container">
+    <div>
       <h1>Todo List</h1>
       
-      <form onSubmit={addTodo} className="todo-form">
+      <form onSubmit={addTodo} data-testid="todo-form">
         <input
           type="text"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
           placeholder="Add a new todo"
-          className="todo-input"
           data-testid="todo-input"
         />
-        <button type="submit" className="todo-button" data-testid="add-button">
-          Add Todo
-        </button>
+        <button type="submit" data-testid="add-button">Add Todo</button>
       </form>
 
-      <ul className="todo-list" data-testid="todo-list">
+      <ul data-testid="todo-list">
         {todos.map(todo => (
-          <li
-            key={todo.id}
-            className={`todo-item ${todo.completed ? 'completed' : ''}`}
-            data-testid={`todo-item-${todo.id}`}
-          >
-            <span
+          <li key={todo.id} data-testid={`todo-item-${todo.id}`}>
+            <span 
               onClick={() => toggleTodo(todo.id)}
-              className="todo-text"
               data-testid={`todo-text-${todo.id}`}
+              style={{ textDecoration: todo.completed ? 'line-through' : 'none' }}
             >
               {todo.text}
             </span>
-            <button
+            <button 
               onClick={() => deleteTodo(todo.id)}
-              className="delete-button"
               data-testid={`delete-button-${todo.id}`}
             >
               Delete
@@ -76,11 +68,11 @@ const TodoList = () => {
         ))}
       </ul>
       
-      <div className="todo-stats" data-testid="todo-stats">
+      <div data-testid="todo-stats">
         Total: {todos.length} | Completed: {todos.filter(t => t.completed).length}
       </div>
     </div>
   );
-};
+}
 
 export default TodoList;
