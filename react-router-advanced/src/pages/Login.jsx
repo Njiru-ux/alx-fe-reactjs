@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../App';
+import { useAuth } from '../hooks/useAuth';  // Import the useAuth hook
 import './Pages.css';
 
 function Login() {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
-  const { login } = useContext(AuthContext);
+  const { login } = useAuth();  // Use the useAuth hook
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {

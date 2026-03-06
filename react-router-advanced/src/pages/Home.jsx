@@ -8,9 +8,9 @@ function Home() {
       <h1>Welcome to React Router Advanced Demo</h1>
       <p>This application demonstrates advanced routing concepts including:</p>
       <ul className="features-list">
-        <li>✅ Nested Routes - Check the Profile section</li>
-        <li>✅ Dynamic Routes - Click on blog posts in the navigation</li>
-        <li>✅ Protected Routes - Try accessing Profile without logging in</li>
+        <li> Nested Routes - Check the Profile section</li>
+        <li> Dynamic Routes - Click on blog posts in the navigation</li>
+        <li> Protected Routes - Try accessing Profile without logging in</li>
       </ul>
       <div className="demo-links">
         <h3>Try these examples:</h3>

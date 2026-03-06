@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import { AuthContext } from '../App';
+import { useAuth } from '../hooks/useAuth';  // Import the useAuth hook
 
 function ProtectedRoute() {
-  const { isAuthenticated } = useContext(AuthContext);
+  const { isAuthenticated } = useAuth();  // Use the useAuth hook instead of useContext directly
+  
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" />;
 }
 

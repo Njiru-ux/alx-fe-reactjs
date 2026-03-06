@@ -8,6 +8,7 @@ import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
+// Create and export the context
 export const AuthContext = createContext();
 
 function App() {
@@ -16,8 +17,14 @@ function App() {
   const login = () => setIsAuthenticated(true);
   const logout = () => setIsAuthenticated(false);
 
+  const authValue = {
+    isAuthenticated,
+    login,
+    logout
+  };
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider value={authValue}>
       <Router>
         <div className="App">
           <Navbar />
@@ -25,7 +32,6 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
-              {/* Changed from :postId to :id to match checker expectation */}
               <Route path="/blog/:id" element={<BlogPost />} />
               
               <Route element={<ProtectedRoute />}>
