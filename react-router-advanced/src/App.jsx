@@ -1,10 +1,8 @@
 import React, { createContext, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Profile from './components/Profile';  // Changed from './pages/Profile'
+import Profile from './components/Profile';
 import Home from './pages/Home';
-import ProfileDetails from './pages/ProfileDetails';
-import ProfileSettings from './pages/ProfileSettings';
 import BlogPost from './pages/BlogPost';
 import Login from './pages/Login';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -30,11 +28,7 @@ function App() {
               <Route path="/blog/:postId" element={<BlogPost />} />
               
               <Route element={<ProtectedRoute />}>
-                <Route path="/profile" element={<Profile />}>
-                  <Route index element={<ProfileDetails />} />
-                  <Route path="details" element={<ProfileDetails />} />
-                  <Route path="settings" element={<ProfileSettings />} />
-                </Route>
+                <Route path="/profile/*" element={<Profile />} />
               </Route>
               
               <Route path="*" element={<div className="not-found"><h2>404 - Page Not Found</h2></div>} />

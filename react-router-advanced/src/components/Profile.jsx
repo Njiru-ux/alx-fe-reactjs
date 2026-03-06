@@ -1,11 +1,12 @@
 import React from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
-import '../pages/Pages.css';  // Changed from './Pages.css'
+import { Routes, Route, Link, useLocation } from 'react-router-dom';  // Add Routes, Route
+import ProfileDetails from '../pages/ProfileDetails';
+import ProfileSettings from '../pages/ProfileSettings';
+import '../pages/Pages.css';
 
 function Profile() {
   const location = useLocation();
   
-  // Check if we're on the exact profile path to determine active tab
   const isDetailsActive = location.pathname === '/profile' || location.pathname === '/profile/details';
   const isSettingsActive = location.pathname === '/profile/settings';
 
@@ -28,7 +29,12 @@ function Profile() {
           </Link>
         </nav>
         <div className="profile-content">
-          <Outlet />
+          {/* Define nested routes here */}
+          <Routes>
+            <Route index element={<ProfileDetails />} />
+            <Route path="details" element={<ProfileDetails />} />
+            <Route path="settings" element={<ProfileSettings />} />
+          </Routes>
         </div>
       </div>
     </div>
