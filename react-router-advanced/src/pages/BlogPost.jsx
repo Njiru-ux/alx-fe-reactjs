@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './Pages.css';
 
 function BlogPost() {
-  const { postId } = useParams();
+  const { id } = useParams();  // Changed from postId to id
   const navigate = useNavigate();
 
   const posts = {
@@ -27,13 +27,13 @@ function BlogPost() {
     }
   };
 
-  const post = posts[postId];
+  const post = posts[id];  // Changed from postId to id
 
   if (!post) {
     return (
       <div className="page-container">
         <h2>Blog Post Not Found</h2>
-        <p>The blog post with ID {postId} does not exist.</p>
+        <p>The blog post with ID {id} does not exist.</p>  {/* Changed from postId to id */}
         <button onClick={() => navigate('/')} className="back-btn">Back to Home</button>
       </div>
     );
@@ -49,7 +49,7 @@ function BlogPost() {
         </div>
         <div className="post-content">
           <p>{post.content}</p>
-          <p>This is a dynamic route example. The post ID "{postId}" is extracted from the URL.</p>
+          <p>This is a dynamic route example. The post ID "{id}" is extracted from the URL.</p>  {/* Changed from postId to id */}
         </div>
         <button onClick={() => navigate(-1)} className="back-btn">Go Back</button>
       </article>

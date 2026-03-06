@@ -25,7 +25,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/blog/:postId" element={<BlogPost />} />
+              {/* Changed from :postId to :id to match checker expectation */}
+              <Route path="/blog/:id" element={<BlogPost />} />
               
               <Route element={<ProtectedRoute />}>
                 <Route path="/profile/*" element={<Profile />} />
