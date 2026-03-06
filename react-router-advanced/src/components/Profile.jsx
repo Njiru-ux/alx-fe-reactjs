@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import './Pages.css';
+import '../pages/Pages.css';  // Changed from './Pages.css'
 
 function Profile() {
   const location = useLocation();

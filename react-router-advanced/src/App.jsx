@@ -1,8 +1,8 @@
 import React, { createContext, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import Profile from './components/Profile';  // Changed from './pages/Profile'
 import Home from './pages/Home';
-import Profile from './pages/Profile';
 import ProfileDetails from './pages/ProfileDetails';
 import ProfileSettings from './pages/ProfileSettings';
 import BlogPost from './pages/BlogPost';
