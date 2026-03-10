@@ -1,5 +1,5 @@
 import React from 'react'
-import useRecipeStore from '../store/recipeStore'
+import useRecipeStore from './recipeStore'
 import './RecipeList.css'
 
 const RecipeList = () => {
