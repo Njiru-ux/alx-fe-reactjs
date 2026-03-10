@@ -1,7 +1,6 @@
-import { create } from 'zustand'
+import { create } from 'zustand';
 
 const useRecipeStore = create((set) => ({
-  // Initial state with sample recipes
   recipes: [
     {
       id: 1,
@@ -19,7 +18,9 @@ const useRecipeStore = create((set) => ({
     }
   ],
   
-  // Actions
+  // Add this missing function
+  setRecipes: (recipes) => set({ recipes }),
+  
   addRecipe: (newRecipe) => set((state) => ({ 
     recipes: [...state.recipes, { ...newRecipe, id: Date.now() }] 
   })),
@@ -33,6 +34,6 @@ const useRecipeStore = create((set) => ({
       recipe.id === id ? { ...recipe, ...updatedRecipe } : recipe
     )
   }))
-}))
+}));
 
-export default useRecipeStore
+export default useRecipeStore;
